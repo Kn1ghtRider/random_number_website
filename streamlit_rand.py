@@ -63,13 +63,21 @@ def get_all_chosen_numbers():
 # Main function
 def main():
     init_db()
-    st.title("Random Number Generator")
+    st.markdown(
+        """
+        <h1 style='font-family: Sedgwick Ave Display, cursive; '>Random Number Generator</h1>
+    """,
+        unsafe_allow_html=True,
+    )
+
+    st.write("Click the button below to generate a random number between 1 and 24.")
+
     if all_numbers_chosen():
         st.write("All numbers have been chosen!")
         if st.button("Reset"):
             reset_numbers()
             st.write("Numbers reset. You can now generate random numbers again.")
-            st.experimental_rerun()
+            st.rerun()
     else:
         if st.button("Generate Random Number"):
             number = choose_number()
